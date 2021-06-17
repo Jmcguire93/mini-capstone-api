@@ -13,4 +13,20 @@ class ProductsController < ApplicationController
     all_products = Product.all 
     render json: all_products.as_json
   end
+
+  def query_params
+    input_value = params["product"]
+    render json: {product: "The product is #{input_value}."}
+  end
+
+  def segment_params
+    input_value = params["key"]
+    render json: {message: "The url segment is #{input_value}."}
+  end
+
+  def one_product
+    product_id = params["id"]
+    product = Product.find_by(id: product_id) 
+    render json: product.as_json 
+  end
 end
