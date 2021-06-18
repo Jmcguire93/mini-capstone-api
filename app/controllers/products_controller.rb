@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all 
-    render json: all_products.as_json
+    render json: products.as_json
   end
 
   def query_params
@@ -33,5 +33,17 @@ class ProductsController < ApplicationController
   def body_params
     input_value = params["secret_info"]
     render json: {message: "The secret info is #{input_value}."}
+  end
+
+  def create
+    product = Product.new(
+      name: params["name"],
+      price: params["price"],
+      image_url: params["image_url"],
+      description: params["description"]
+    )
+
+    product.save
+    render json: product.as_json
   end
 end
