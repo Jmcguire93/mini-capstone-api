@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   post "/products", controller: "products", action: "create"    ## creates instances
 
   patch "/products/:id", controller: "products", action: "update"   ## updates instances
+
+  delete "/products/:id", controller: "products", action: "destroy"  ##deletes a specific product/instance
 end
