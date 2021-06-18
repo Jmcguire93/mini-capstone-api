@@ -4,11 +4,13 @@ Rails.application.routes.draw do
 
   get "/second_product", controller: "products", action: "second_product"
 
-  get "/all_products", controller: "products", action: "all_products"
+  get "/products", controller: "products", action: "index"
 
   get "/query_params", controller: "products", action: "query_params"
 
   get "/segment_params/:key", controller: "products", action: "segment_params"
 
   get "/one_product", controller: "products", action: "one_product"
+
+  post "/body_params", controller: "products", action: "body_params"
 end

@@ -9,8 +9,8 @@ class ProductsController < ApplicationController
     render json: product.as_json
   end
 
-  def all_products
-    all_products = Product.all 
+  def index
+    products = Product.all 
     render json: all_products.as_json
   end
 
@@ -28,5 +28,10 @@ class ProductsController < ApplicationController
     product_id = params["id"]
     product = Product.find_by(id: product_id) 
     render json: product.as_json 
+  end
+
+  def body_params
+    input_value = params["secret_info"]
+    render json: {message: "The secret info is #{input_value}."}
   end
 end
