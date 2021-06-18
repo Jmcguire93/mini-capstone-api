@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/segment_params/:key", controller: "products", action: "segment_params"
 
-  get "/one_product", controller: "products", action: "one_product"
+  get "/products/:id", controller: "products", action: "show"
 
   post "/body_params", controller: "products", action: "body_params"
 end

@@ -24,9 +24,9 @@ class ProductsController < ApplicationController
     render json: {message: "The url segment is #{input_value}."}
   end
 
-  def one_product
+  def show
     product_id = params["id"]
-    product = Product.find_by(id: product_id) 
+    product = Product.find_by(product_id) 
     render json: product.as_json 
   end
 
