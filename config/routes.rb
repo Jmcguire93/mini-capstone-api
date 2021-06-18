@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   post "/body_params", controller: "products", action: "body_params"
 
-  post "/products", controller: "products", action: "create"    ##
+  post "/products", controller: "products", action: "create"    ## creates instances
+
+  patch "/products/:id", controller: "products", action: "update"   ## updates instances
 end
