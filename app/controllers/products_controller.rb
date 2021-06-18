@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
 
   def show
     product_id = params["id"]
-    product = Product.find_by(product_id) 
+    product = Product.find_by(id: product_id) #find(product_id)
     render json: product.as_json 
   end
 
