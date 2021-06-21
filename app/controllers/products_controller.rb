@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
 
   def index
     products = Product.all 
-    render json: products.as_json(methods: [:is_discounted?, :tax, :total])
+    render json: products #.as_json(methods: [:is_discounted?, :tax, :total])
   end
 
   def query_params
@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
   def show
     product_id = params["id"]
     product = Product.find_by(id: product_id) #find(product_id)
-    render json: product.as_json(methods: [:is_discounted?, :tax, :total])
+    render json: product #.as_json(methods: [:is_discounted?, :tax, :total])
   end
 
   def body_params
