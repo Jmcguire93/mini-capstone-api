@@ -1,11 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# Product.create(name: "Computer", price: 800, image_url: "https://images-na.ssl-images-amazon.com/images/I/7161%2BB-5StL._AC_SL1500_.jpg", description: "This is a description of the Computer product.")
-
-# Product.create(name: "Keyboard", price: 50, image_url: "https://mercari-images.global.ssl.fastly.net/photos/m99461935228_1.jpg?1598297530", description: "This is a description of the Keyboard product.")
+Product.create!([
+  {name: "Computer", price: "800.0", image_url: "https://images-na.ssl-images-amazon.com/images/I/7161%2BB-5StL._AC_SL1500_.jpg", description: "This is a description of the Computer product.", stock: nil},
+  {name: "Keyboard", price: "50.0", image_url: "https://mercari-images.global.ssl.fastly.net/photos/m99461935228_1.jpg?1598297530", description: "This is a description of the Keyboard product.", stock: nil},
+  {name: "Mousepad", price: "8.0", image_url: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5869/5869549_sd.jpg;maxHeight=640;maxWidth=550", description: "This is a gaming mousepad", stock: nil},
+  {name: "Headset", price: "100.0", image_url: "https://assets.sennheiser.com/img/18209/product_detail_x2_desktop_HD_559_Sennheiser_01.jpg", description: "The open around ear headphones HD 559 is the ideal choice for listeners seeking an optimal blend of all-round performance and quality for home entertainment.", stock: nil}
+])
