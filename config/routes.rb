@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/products", controller: "products", action: "index"    ## Displays a list of all instances 
 
   get "/products/:id", controller: "products", action: "show"     ## Displays a specific instance
-  ß
+  
   post "/products", controller: "products", action: "create"    ## creates instances
 
   patch "/products/:id", controller: "products", action: "update"   ## updates instances
