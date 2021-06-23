@@ -4,16 +4,16 @@ Rails.application.routes.draw do
 
   get "/second_product", controller: "products", action: "second_product"
 
+  post "/body_params", controller: "products", action: "body_params"
+  
+  get "/query_params", controller: "products", action: "query_params"
+  
+  get "/segment_params/:key", controller: "products", action: "segment_params"
+  
   get "/products", controller: "products", action: "index"    ## Displays a list of all instances 
 
-  get "/query_params", controller: "products", action: "query_params"
-
-  get "/segment_params/:key", controller: "products", action: "segment_params"
-
   get "/products/:id", controller: "products", action: "show"     ## Displays a specific instance
-
-  post "/body_params", controller: "products", action: "body_params"
-
+  ß
   post "/products", controller: "products", action: "create"    ## creates instances
 
   patch "/products/:id", controller: "products", action: "update"   ## updates instances
