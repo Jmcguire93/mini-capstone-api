@@ -44,8 +44,12 @@ class ProductsController < ApplicationController
       stock: params["stock"]
     )
 
-    product.save
-    render json: product.as_json
+    if product.save
+      render json: product.as_json
+    else
+      render json: { errors: product.error.full_messages },
+      status: :unprocessable_entity
+    end 
   end
 
   def update
@@ -58,15 +62,23 @@ class ProductsController < ApplicationController
     product.description = params["description"] || product.description
     product.stock = params["stock"] || product.stock
     
-    product.save 
-    render json: product.as_json
+    if product.save 
+      render json: product.as_json
+    else
+      render json: { errors: product.error.full_messages },
+      status: :unprocessable_entity
+    end
   end
 
   def destroy
     product_id = params[:id]
     product = Product.find_by(id: product_id)
-    product.destroy
-
-    render json: {message: "Product sucesfully destroyed."}
+    
+    if product.destroy
+      render json: {message: "Product sucesfully destroyed."}
+    else
+      render json: { errors: product.error.full_messages },
+      status: :unprocessable_entity
+    end
   end
 end
