@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   patch "/products/:id", controller: "products", action: "update"   ## updates instances
 
   delete "/products/:id", controller: "products", action: "destroy"  ##deletes a specific product/instance
+
+
+  post "/users", controller: "users", action: "create" 
 end
