@@ -27,4 +27,7 @@ Rails.application.routes.draw do
 
 
   post "/sessions", controller: "sessions", action: "create"
+
+
+  post "/orders", controller: "order", action: "create"
 end
