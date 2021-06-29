@@ -1,12 +1,17 @@
 class OrdersController < ApplicationController
   def create
+    product = Product.find_by(id: params[:product_id])
+    calculated_subtotal = product.price * params[:quanity].to_i
+    calculated_tax = calculated_subtotal * 0.09
+    calculated_total = calculated_subtotal + calculated_tax
+
     order = Order.new(
-      user_id: current_user.id #params["user_id"],
+      user_id: current_user.id, 
       product_id: params[:product_id],
       quantity: params[:quantity],
-      subtotal: product.price * params[:quanitity].to_i,
-      tax: product.tax * params[:quantity].to_i,
-      total: product.total * params[:quanitity].to_i
+      subtotal: calculated_subtotal,  #product.price * params[:quanitity].to_i,
+      tax: calculated_tax,            #product.tax * params[:quantity].to_i,
+      total: calculated_total         #product.total * params[:quanitity].to_i
     )
 
     if order.save
@@ -18,13 +23,13 @@ class OrdersController < ApplicationController
   end
 
   def show
-    order_id = params["id"]
-    order = Order.find_by(id: order_id) #find(order_id)
-    render json: order #.as_json(methods: [:is_discounted?, :tax, :total])
+    #order_id = params["id"]
+    order = current_user.orders.find_by(id: params[:id])     #find(order_id)
+    render json: order                      #.as_json(methods: [:is_discounted?, :tax, :total])
   end
 
   def index
-    orders = Order.all 
-    render json: orders #.as_json(methods: [:is_discounted?, :tax, :total])
+    orders = current_user.orders
+    render json: orders                     #.as_json(methods: [:is_discounted?, :tax, :total])
   end
 end
