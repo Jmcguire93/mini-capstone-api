@@ -16,4 +16,15 @@ class OrdersController < ApplicationController
       status: :unprocessable_entity
     end 
   end
+
+  def show
+    order_id = params["id"]
+    order = Order.find_by(id: order_id) #find(order_id)
+    render json: order #.as_json(methods: [:is_discounted?, :tax, :total])
+  end
+
+  def index
+    orders = Order.all 
+    render json: orders #.as_json(methods: [:is_discounted?, :tax, :total])
+  end
 end
