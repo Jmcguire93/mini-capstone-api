@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   def show
     #order_id = params["id"]
     order = current_user.orders.find_by(id: params[:id])     #find(order_id)
-    render json: order                      #.as_json(methods: [:is_discounted?, :tax, :total])
+    render json: order                      
   end
 
   def index
@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
       orders = current_user.orders
       render json: orders  
     else
-      render json: [], status: :unauthorized
+      render json: {unauthorized_access: "You need to be logged in"}, status: :unauthorized
     end                   
   end
 end
