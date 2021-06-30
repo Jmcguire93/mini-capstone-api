@@ -20,13 +20,13 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     unless current_user
-      render json: {}, status: :unauthorized
+      render json: {unauthorized_access: "You need to be logged in as a user"}, status: :unauthorized
     end
   end
   
   def authenticate_admin
     unless current_user && current_user.admin
-      render json: {}, status: :unauthorized
+      render json: {unauthorized_access: "You need to be logged in as an admin"}, status: :unauthorized
     end
   end
 end
