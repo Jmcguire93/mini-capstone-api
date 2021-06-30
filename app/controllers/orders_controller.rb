@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  #before_action :authenticate_user
+
   def create
     product = Product.find_by(id: params[:product_id])
     calculated_subtotal = product.price * params[:quanity].to_i
@@ -9,16 +11,15 @@ class OrdersController < ApplicationController
       user_id: current_user.id, 
       product_id: params[:product_id],
       quantity: params[:quantity],
-      subtotal: calculated_subtotal,  #product.price * params[:quanitity].to_i,
-      tax: calculated_tax,            #product.tax * params[:quantity].to_i,
-      total: calculated_total         #product.total * params[:quanitity].to_i
+      subtotal: calculated_subtotal,  
+      tax: calculated_tax,            
+      total: calculated_total         
     )
 
-    if order.save
+    if current_user && order.save
       render json: order #.as_json
     else
-      render json: { errors: order.error.full_messages },
-      status: :unprocessable_entity
+      render json: {unauthorized_access: "You need to be logged in"}, status: :unauthorized
     end 
   end
 
@@ -29,11 +30,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    if current_user 
-      orders = current_user.orders
-      render json: orders  
-    else
-      render json: {unauthorized_access: "You need to be logged in"}, status: :unauthorized
-    end                   
+    # if current_user 
+    #   orders = current_user.orders
+    #   render json: orders  
+    # else
+    #   render json: {unauthorized_access: "You need to be logged in"}, status: :unauthorized
+    # end                   
   end
 end
