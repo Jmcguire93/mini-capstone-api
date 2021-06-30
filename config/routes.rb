@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   get "/first_product", controller: "products", action: "first_product"
 
   get "/second_product", controller: "products", action: "second_product"
@@ -20,15 +20,18 @@ Rails.application.routes.draw do
 
   delete "/products/:id", controller: "products", action: "destroy"  ##deletes a specific product/instance
 
-
+  ## Users 
+  
   post "/users", controller: "users", action: "create" 
   
   get "/users", controller: "users", action: "index"
 
-
+  ## Sessions
+  
   post "/sessions", controller: "sessions", action: "create"
 
-
+  ## Orders
+  
   post "/orders", controller: "orders", action: "create"
 
   get "/orders", controller: "orders", action: "index"
