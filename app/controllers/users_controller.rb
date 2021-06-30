@@ -16,6 +16,6 @@ class UsersController < ApplicationController
 
   def index
     users = User.all 
-    render json: users #.as_json(methods: [:is_discounted?, :tax, :total])
+    render json: users 
   end
 end

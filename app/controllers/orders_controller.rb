@@ -30,11 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    # if current_user 
-    #   orders = current_user.orders
-    #   render json: orders  
-    # else
-    #   render json: {unauthorized_access: "You need to be logged in"}, status: :unauthorized
-    # end                   
+    orders = current_user.orders
+    render json: orders                   
   end
 end
