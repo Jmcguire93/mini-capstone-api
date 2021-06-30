@@ -29,7 +29,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    orders = current_user.orders
-    render json: orders                     #.as_json(methods: [:is_discounted?, :tax, :total])
+    if current_user 
+      orders = current_user.orders
+      render json: orders  
+    else
+      render json: [], status: :unauthorized
+    end                   
   end
 end
