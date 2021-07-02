@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to :supplier
   has_many :orders
   has_many :product_categories
-  has_many :categories, through: :product_categories
+  has_many :categories, through: :category_products
 
   # def categories
   #   product_categories.map do |product_category|
