@@ -12,8 +12,13 @@ class ProductsController < ApplicationController
   end
 
   def index
-    products = Product.all 
-    render json: products #.as_json(methods: [:is_discounted?, :tax, :total])
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      products = category.products
+    else
+      products = Product.all 
+    end
+    render json: products
   end
 
   def query_params
