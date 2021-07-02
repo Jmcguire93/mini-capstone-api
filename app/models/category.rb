@@ -1,9 +1,9 @@
 class Category < ApplicationRecord
-  has_many :product_categories
+  has_many :category_products
   has_many :products, through: :category_products
 
   # def products
-  #   product_categories.map do |_product_category| 
+  #   category_products.map do |category_product| 
   #     product.category.product
   #   end
   # end
