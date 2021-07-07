@@ -1,5 +1,6 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :quantity, :subtotal, :tax, :total
+  attributes :id, :subtotal, :tax, :total, :money_math
 
-  belongs_to :product
+  # belongs_to :product
+  has_many :carted_products
 end
